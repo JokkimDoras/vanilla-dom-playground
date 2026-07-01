@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 300px;
+            min-height: 100px;
+            border: 2px solid red;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        input {
+            border: 2px solid black;
+            padding: 5px;
+        }
+
+        li {
+            cursor: pointer;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <input />
+        <button type="submit" class="add">Add</button>
+    </form>
+
+    <div class="header">
+        <ul class="items"></ul>
+    </div>
+
+    <script>
+        const searchInput = document.querySelector('input');
+        const toInsert = document.querySelector('.items');
+        const button = document.querySelector('.add');
+
+        let inputValue = '';
+        let values = [];
+
+        function show() {
+            inputValue = this.value;
+        }
+
+        function handleClick() {
+
+            if (inputValue.trim() === '') {
+                return;
+            }
+
+            values.unshift(inputValue);
+
+            const toReturn = values.map((value, i) => {
+                return `<li class="things" data-index=${i}>${value}</li>`;
+            });
+
+            toInsert.innerHTML = toReturn.join('');
+
+            clearInput();
+        }
+
+        function sayHi(e) {
+            e.preventDefault()
+            console.log('hi')
+        }
+
+        window.addEventListener('submit', sayHi)
+
+        function clearInput() {
+            searchInput.value = '';
+            inputValue = '';
+        }
+
+        function renderTodo() {
+            const toReturn = values.map((value, index) => {
+                return `<li class='things' data-index=${index}>${value}</li>`
+            })
+
+            toInsert.innerHTML = toReturn.join('')
+        }
+        // Add button
+        button.addEventListener('click', handleClick);
+
+        // Input typing
+        searchInput.addEventListener('keyup', show);
+
+        // Event delegation
+        toInsert.addEventListener('click', function (e, i) {
+            if (!e.target.classList.contains('things')) return;
+           
+            const index = Number(e.target.dataset.index);
+            const todoElement = e.target;
+
+            if(e.ctrlKey){
+                const currentValue = values[index]
+                todoElement.innerHTML = `<input type='text' class='edit-input' value='${currentValue}'> `
+                const inputField = todoElement.querySelector('.edit-input')
+                inputField.focus();
+
+                function saveEdit(){
+                    const newText = inputField.value.trim();
+                    if(newText !== ''){
+                        values[index] = newText;
+                    }
+                    renderTodo()
+                }
+
+                inputField.addEventListener('blur',saveEdit);
+                inputField.addEventListener('keydown',function(e){
+                    if(e.key === 'Enter') saveEdit()
+                })
+
+            }else{
+
+                if (e.target.classList.contains('things')) {
+                    const filteredValue = values.filter((value, index) => {
+                    const i = e.target.dataset.index
+                    return index !== Number(i)
+                })
+                values = filteredValue
+                values = filteredValue
+                console.log('You clicked:', e.target.textContent);
+                
+                renderTodo()
+            }
+        }
+
+        });
+
+        // toInsert.addEventListener('click',function(e){
+        //  console.log(this)
+        // })
+    </script>
+
+</body>
+
+</html>
