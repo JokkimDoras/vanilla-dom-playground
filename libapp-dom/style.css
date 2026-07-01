@@ -1,0 +1,26 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    border: 2px solid black;
+}
+
+h1{
+
+}
+
+input{
+    height: 20px;
+    margin-top: 16px;
+}
+
+.lib{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
