@@ -1,0 +1,47 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    border: 2px solid black;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+input{
+    height: 20px;
+    margin-top: 16px;
+}
+
+.lib{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.lib-item{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    width: 200px;
+    height: 150px;
+    margin-top: 20px;
+    flex-direction: column;
+
+
+}
+.backtohome{
+    color: rgb(207, 25, 86);
+}
