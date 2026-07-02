@@ -1,5 +1,28 @@
 import { Navbar } from "./navBar.js";
 
+const nav = document.querySelector(".nav");
+
+
+const navbarHtml = Navbar();
+nav.innerHTML = navbarHtml;
+const input = document.querySelector('.inp')
+let term ='';
+input.addEventListener('keyup',(e) => term = e.target.value)
+
+nav.addEventListener('submit',function(e) {
+e.preventDefault();
+window.location.href = `/search.html?libname=${term}`
+// try{
+//  const fetchPackage = async() => {
+//       const res = await fetch(`https://registry.npmjs.org/-/v1/search?text=${term}`)
+//       const data = res.json();
+
+//  }
+ 
+// }catch(err){
+//   console.error(err)
+//  }
+})
 const FEATURED_PACKAGES = [
   "react",
   "typescript",
@@ -22,7 +45,6 @@ async function getInitialPackage() {
     });
 
     const packagesData = await Promise.all(promise);
-    console.log(packagesData);
     packagesData.map((pack) => {
       return (libHeader.innerHTML += `
           <div data-key=${pack._id} class='lib-item'>
@@ -34,7 +56,7 @@ async function getInitialPackage() {
     const packItems = document.querySelectorAll('.lib-item')
     packItems.forEach(pak => pak.addEventListener('click',function() {
         const lib = this.dataset.key
-        window.location.href = `/libapp-dom/detail.html?libname=${lib}`
+        window.location.href = `/detail.html?libname=${lib}`
     }))
     return packagesData;
   } catch (err) {
@@ -43,9 +65,4 @@ async function getInitialPackage() {
 }
 
 getInitialPackage();
-const nav = document.querySelector(".nav");
-
-const navbarHtml = Navbar();
-
-nav.innerHTML = navbarHtml;
 
