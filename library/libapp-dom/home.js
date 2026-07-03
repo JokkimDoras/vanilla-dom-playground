@@ -11,7 +11,7 @@ input.addEventListener('keyup',(e) => term = e.target.value)
 
 nav.addEventListener('submit',function(e) {
 e.preventDefault();
-window.location.href = `/search.html?libname=${term}`
+window.location.href = `/libapp-dom/search.html?libname=${term}`
 // try{
 //  const fetchPackage = async() => {
 //       const res = await fetch(`https://registry.npmjs.org/-/v1/search?text=${term}`)
@@ -56,7 +56,7 @@ async function getInitialPackage() {
     const packItems = document.querySelectorAll('.lib-item')
     packItems.forEach(pak => pak.addEventListener('click',function() {
         const lib = this.dataset.key
-        window.location.href = `/detail.html?libname=${lib}`
+        window.location.href = `/libapp-dom/detail.html?libname=${lib}`
     }))
     return packagesData;
   } catch (err) {

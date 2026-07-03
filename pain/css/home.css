@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 2px solid black;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff
+
+    
+}
+.center-item{
+    display: flex;
+    gap: 20px;
+}
+.center-item p{
+    
+}
+.app-name{
+    color: green;
+}
+.img-header{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 40px;
+    align-items: center;
+    gap: 10px;
+
+}
+.stage-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+}
+.app-log{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    gap: 10px;
+}
+.app-log div{
+    width: 100px;
+    height: 100px;
+}
+button{
+    padding: 20px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: larger;
+    cursor: pointer;
+}
+.login-div button{
+    background: greenyellow;
+}
+.register-div button{
+    background: blueviolet;
+    color: #ffffff;
+
+}

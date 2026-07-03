@@ -54,3 +54,6 @@ input{
     justify-content: center;
     align-items: center;
 }
+.child-header{
+    border: 2px solid black;
+}

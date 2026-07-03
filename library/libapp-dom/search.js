@@ -19,10 +19,10 @@ const packageName = urlParams.get('libname')
    .then(res => res.json())
    .then(data => {
     data.objects.map((pac) => {
-        pac.package.maintainers.map((main) => maintainerDiv.innerHTML += `<p>${main.username}</p>`)
+        pac.package.maintainers.forEach((main) => maintainerDiv.innerHTML += `<p>${main.username}</p>`)
         
     })
-    return data.objects.map((pack) => {
+    return data.objects.forEach((pack) => {
           parentDiv.innerHTML +=`
           <div class='child-header'>
           <div>
