@@ -1,7 +1,8 @@
 // import { renderSideBar } from '../js/sidebar.js'
 
 import { navigate } from "./router.js";
-
+import { renderSideBar } from "./sidebar.js";
+import { nav } from "./nav.js";
 // const sidebarDiv = document.getElementById('sidebar')
 // sidebarDiv.innerHTML = renderSideBar();
 // const appName = document.querySelector('.app-name')
@@ -31,47 +32,63 @@ import { navigate } from "./router.js";
 //     navigate('add')
 // })
 const content = document.querySelector("#content");
-console.log(content);
+const sidebarDiv = document.querySelector("#sidebar");
+const navDiv = document.querySelector("#nav-header");
+const realContent = document.querySelector('.content-real')
 
 export function dashboard() {
- return content.innerHTML = `
+  console.log(nav());
+
+  navDiv.innerHTML= nav()
+
+  sidebarDiv.innerHTML = renderSideBar();
+
+  return (realContent.innerHTML = `
     <h1>Dashboard</h1>
     <a data-path='add'>go to the addTransaction</a>
     <a data-path='profile'>go to the Profile</a> 
     <a data-path='setting'>go to setting page</a>  
-    `;
+    `);
 }
 dashboard();
 
-content.addEventListener('click',function(e){
-    const { path } = e.target.dataset
-    console.log(path)
-
-    if(path === 'add'){
-        navigate(path)
-    }
-    if(path === 'setting'){
-        navigate(path)
-    }
-    if(path === 'profile'){
-        navigate(path)
-    }
+const toggleTheBar = document.querySelector('.toggle-the-bar').addEventListener('click',function() {
+    sidebarDiv.classList.toggle('sidebar-close')
 })
+console.log(toggleTheBar)
 
-window.addEventListener('popstate',function() {
-    var path = this.window.location.pathname.replace('/','')
-    navigate('dashboard.html')
-    // console.log(path)
-    // if(path === 'add'){
-    //     navigate(path)
-    // }
-    // if(path === 'setting'){
-    //     navigate(path)
-    // }
-    // if(path === 'profile'){
-    //     navigate(path)
-    // }
-    // if(path == '#dashboard.html' || path === 'dashboard'){
-    //     navigate('dashboard.html')
-    // }
-})
+content.addEventListener("click", function (e) {
+  const { path } = e.target.dataset;
+  console.log(path);
+
+  // if(path === 'add'){
+  //     navigate(path)
+  // }
+  // if(path === 'setting'){
+  //     navigate(path)
+  // }
+  // if(path === 'profile'){
+  //     navigate(path)
+  // }
+  if (path) navigate(path);
+});
+
+
+
+window.addEventListener("popstate", function () {
+  var path = this.window.location.pathname.replace("/", "");
+  navigate("dashboard.html");
+  // console.log(path)
+  // if(path === 'add'){
+  //     navigate(path)
+  // }
+  // if(path === 'setting'){
+  //     navigate(path)
+  // }
+  // if(path === 'profile'){
+  //     navigate(path)
+  // }
+  // if(path == '#dashboard.html' || path === 'dashboard'){
+  //     navigate('dashboard.html')
+  // }
+});
