@@ -4,6 +4,7 @@ import { settingPage } from "./pages/settingPage.js";
 // import { dashboardPage } from "./pages/dashboardPage.js";
 import { dashboard } from "./dashboard.js";
 const content = document.querySelector("#content");
+const realContent = document.querySelector('.content-real')
 
 export function navigate(page, push = true) {
   if (push) {
@@ -11,23 +12,21 @@ export function navigate(page, push = true) {
   }
   if (page === "dashboard.html") {
     history.pushState({}, "", `/${page}`);
-    console.log("render the dashboard now");
-    content.innerHTML = dashboard();
+    realContent.innerHTML = dashboard();
   }
   if (page === "setting") {
-    content.innerHTML = settingPage();
+    realContent.innerHTML = settingPage();
   }
   if (page === "profile") {
-    content.innerHTML = profilePage();
+    realContent.innerHTML = profilePage();
   }
 
   if (page === "add") {
-    content.innerHTML = addTransaction();
+    realContent.innerHTML = addTransaction();
   }
 }
 
 window.addEventListener("popstate", () => {
   const page = window.location.pathname.replace("/", "");
-  console.log(page);
   navigate(page, false);
 });

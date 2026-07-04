@@ -37,12 +37,18 @@ const navDiv = document.querySelector("#nav-header");
 const realContent = document.querySelector('.content-real')
 
 export function dashboard() {
-  console.log(nav());
 
+    console.log('bro am i rendering again??')
   navDiv.innerHTML= nav()
 
   sidebarDiv.innerHTML = renderSideBar();
 
+  const stuff = document.querySelector('.toggle-the-bar')
+  console.log('stuff',stuff)
+  stuff.addEventListener('click',function() {
+      console.log(this)
+      sidebarDiv.classList.toggle('sidebar-close')
+  })
   return (realContent.innerHTML = `
     <h1>Dashboard</h1>
     <a data-path='add'>go to the addTransaction</a>
@@ -52,14 +58,9 @@ export function dashboard() {
 }
 dashboard();
 
-const toggleTheBar = document.querySelector('.toggle-the-bar').addEventListener('click',function() {
-    sidebarDiv.classList.toggle('sidebar-close')
-})
-console.log(toggleTheBar)
 
 content.addEventListener("click", function (e) {
   const { path } = e.target.dataset;
-  console.log(path);
 
   // if(path === 'add'){
   //     navigate(path)
