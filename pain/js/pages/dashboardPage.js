@@ -1,9 +1,8 @@
-export function renderDashboard(content) {
+export function dashboardPage(content) {
      
-    return `
+    content.innerHTML = `
     <h1>Dashboard</h1>
-    <a>go to the setting</a>
-    <a>go to the Profile</a>
-
+    <a data-path='setting'>go to the setting</a>
+    <a data-path='profile'>go to the Profile</a>   
     `
 }

@@ -1,5 +1,7 @@
 // import { renderSideBar } from '../js/sidebar.js'
 
+import { navigate } from "./router.js";
+
 // const sidebarDiv = document.getElementById('sidebar')
 // sidebarDiv.innerHTML = renderSideBar();
 // const appName = document.querySelector('.app-name')
@@ -13,8 +15,7 @@
 //     sidebarDiv.classList.toggle('toggle')
 
 // })
-import { navigate } from "./router.js"
-// const content = document.querySelector('#content')
+// import { navigate } from "./router.js";
 //  const dashboard = document.createElement('a')
 //  const add = document.createElement('a')
 
@@ -22,7 +23,6 @@ import { navigate } from "./router.js"
 // add.textContent = 'go to addTransaction page'
 //  content.appendChild(dashboard);
 //  content.appendChild(add);
- 
 
 // dashboard.addEventListener('click',function(){
 //     navigate('dashboard')
@@ -30,5 +30,30 @@ import { navigate } from "./router.js"
 // add.addEventListener('click',function(){
 //     navigate('add')
 // })
+const content = document.querySelector("#content");
+console.log(content);
 
-navigate('dashboard')
+export function dashboard() {
+  content.innerHTML = `
+    <h1>Dashboard</h1>
+    <a data-path='add'>go to the addTransaction</a>
+    <a data-path='profile'>go to the Profile</a> 
+    <a data-path='setting'>go to setting page</a>  
+    `;
+}
+dashboard();
+
+content.addEventListener('click',function(e){
+    const { path } = e.target.dataset
+    console.log(path)
+
+    if(path === 'add'){
+        navigate(path)
+    }
+    if(path === 'setting'){
+        navigate(path)
+    }
+    if(path === 'profile'){
+        navigate(path)
+    }
+})
