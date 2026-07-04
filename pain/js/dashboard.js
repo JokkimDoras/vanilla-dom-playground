@@ -34,7 +34,7 @@ const content = document.querySelector("#content");
 console.log(content);
 
 export function dashboard() {
-  content.innerHTML = `
+ return content.innerHTML = `
     <h1>Dashboard</h1>
     <a data-path='add'>go to the addTransaction</a>
     <a data-path='profile'>go to the Profile</a> 
@@ -56,4 +56,22 @@ content.addEventListener('click',function(e){
     if(path === 'profile'){
         navigate(path)
     }
+})
+
+window.addEventListener('popstate',function() {
+    var path = this.window.location.pathname.replace('/','')
+    navigate('dashboard.html')
+    // console.log(path)
+    // if(path === 'add'){
+    //     navigate(path)
+    // }
+    // if(path === 'setting'){
+    //     navigate(path)
+    // }
+    // if(path === 'profile'){
+    //     navigate(path)
+    // }
+    // if(path == '#dashboard.html' || path === 'dashboard'){
+    //     navigate('dashboard.html')
+    // }
 })
