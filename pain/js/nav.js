@@ -5,7 +5,7 @@ export function nav(){
     <div class='nav-last'>
     <p>Add Transaction</p>
     <p>Setting</p>
-    <button>Change Theme</button>
+    <button id='theme-btn'>Change Theme</button>
     </div>
        `
 }

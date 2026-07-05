@@ -34,30 +34,42 @@ import { nav } from "./nav.js";
 const content = document.querySelector("#content");
 const sidebarDiv = document.querySelector("#sidebar");
 const navDiv = document.querySelector("#nav-header");
-const realContent = document.querySelector('.content-real')
+const realContent = document.querySelector(".content-real");
 
+let isDark = false;
 export function dashboard() {
+  console.log("bro am i rendering again??");
+  navDiv.innerHTML = nav();
 
-    console.log('bro am i rendering again??')
-  navDiv.innerHTML= nav()
+  const themeBtn = document.querySelector("#theme-btn");
 
+  themeBtn.addEventListener("click", function () {
+    isDark = !isDark;
+    console.log("is that changing", isDark);
+    if (isDark) {
+      document.body.style.background = "#121212";
+      document.body.style.color = "white";
+    } else {
+      document.body.style.background = "#f7f7f7";
+      document.body.style.color = "black";
+    }
+  });
   sidebarDiv.innerHTML = renderSideBar();
 
-  const stuff = document.querySelector('.toggle-the-bar')
-  console.log('stuff',stuff)
-  stuff.addEventListener('click',function() {
-      console.log(this)
-      sidebarDiv.classList.toggle('sidebar-close')
-  })
-  return (realContent.innerHTML = `
+  const stuff = document.querySelector(".toggle-the-bar");
+  stuff.addEventListener("click", function () {
+    sidebarDiv.classList.toggle("sidebar-close");
+  });
+  return (realContent.innerHTML = 
+    `
     <h1>Dashboard</h1>
     <a data-path='add'>go to the addTransaction</a>
     <a data-path='profile'>go to the Profile</a> 
     <a data-path='setting'>go to setting page</a>  
-    `);
+    `
+    );
 }
 dashboard();
-
 
 content.addEventListener("click", function (e) {
   const { path } = e.target.dataset;
@@ -73,8 +85,6 @@ content.addEventListener("click", function (e) {
   // }
   if (path) navigate(path);
 });
-
-
 
 window.addEventListener("popstate", function () {
   var path = this.window.location.pathname.replace("/", "");

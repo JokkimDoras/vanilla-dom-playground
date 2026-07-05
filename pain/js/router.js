@@ -1,11 +1,12 @@
 import { profilePage } from "./pages/profilePage.js";
-import { addTransaction } from "./pages/addTransaction.js";
+import { TransactionForm } from "./pages/addTransaction.js";
 import { settingPage } from "./pages/settingPage.js";
 // import { dashboardPage } from "./pages/dashboardPage.js";
+// import { initNewTransaction } from "./pages/addTransaction.js";
 import { dashboard } from "./dashboard.js";
 const content = document.querySelector("#content");
 const realContent = document.querySelector('.content-real')
-
+const addTxPage = new TransactionForm();
 export function navigate(page, push = true) {
   if (push) {
     history.pushState({}, "", `/#${page}`);
@@ -22,7 +23,8 @@ export function navigate(page, push = true) {
   }
 
   if (page === "add") {
-    realContent.innerHTML = addTransaction();
+    realContent.innerHTML = addTxPage.render();
+    addTxPage.init()
   }
 }
 
