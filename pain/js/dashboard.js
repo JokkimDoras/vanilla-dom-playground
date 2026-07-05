@@ -40,13 +40,11 @@ const dashPage = new dashboardPage();
 
 let isDark = false;
 export function dashboard() {
-  console.log("bro am i rendering again??");
   navDiv.innerHTML = nav();
 
   const updateBalaceButton = document.querySelector('#add-balance');
   const addTransButton = document.querySelector('#add-transaction')
    const Appname = document.querySelector('.app-name-stuff')
-   console.log(Appname)
    addTransButton.addEventListener('click',function(){
     //dont touch
     var pathname = this.classList.dataset
@@ -74,6 +72,41 @@ export function dashboard() {
     }
   });
   sidebarDiv.innerHTML = renderSideBar();
+
+  const dash = document.querySelector('#dash')
+  const newT = document.querySelector('#new')
+  const setting = document.querySelector('#history')
+  const profile = document.querySelector('#profile')
+  const updateBalace = document.querySelector('#balance')
+  newT.addEventListener('click',function(){
+    if(this.dataset.path == window.location.pathname.replace('/','')){
+      console.log(window.location.pathname.replace('/',''))
+      return;
+    }
+    navigate(this.dataset.path)
+  })
+  dash.addEventListener('click',function(){
+    if(this.dataset.path == window.location.pathname.replace('/','')){
+      console.log(window.location.pathname.replace('/',''))
+      return;
+    }
+    console.log('i am not runiing')
+    navigate(this.dataset.path)
+  })
+
+  updateBalace.addEventListener('click',function(){
+    if(this.dataset.path == window.location.pathname.replace('/','')){
+      console.log(window.location.pathname.replace('/',''))
+      return;
+    }
+    navigate(this.dataset.path)
+  })
+
+  if(isDark){
+    //
+  }
+
+
 
   const stuff = document.querySelector(".toggle-the-bar");
   stuff.addEventListener("click", function () {
