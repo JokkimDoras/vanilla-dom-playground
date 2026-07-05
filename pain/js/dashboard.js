@@ -12,7 +12,6 @@ import { dashboardPage } from "./pages/dashboardPage.js";
 //     sidebarDiv.classList.toggle('toggle')
 //     console.log(sidebarDiv)
 // })
-
 // loadingDiv.addEventListener('click',function(){
 //     sidebarDiv.classList.toggle('toggle')
 
@@ -90,7 +89,6 @@ export function dashboard() {
       console.log(window.location.pathname.replace('/',''))
       return;
     }
-    console.log('i am not runiing')
     navigate(this.dataset.path)
   })
 

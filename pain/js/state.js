@@ -5,7 +5,7 @@
 
 class State {
     constructor(){
-        this.startBalance = 2000;
+        this.startBalance = localStorage.getItem('startbalance') || 0;
         this.transaction = [];
     }
     updateStartBalance(amount){

@@ -29,7 +29,10 @@ export class UpdateBalance {
 
        this.balanceForm.addEventListener('submit',(e) =>{
            e.preventDefault();
+        //    if(this.currentBalanceInp.value= '') return console.log('wrong');
            this.state.startBalance = Number(this.currentBalanceInp.value)
+           localStorage.setItem('startbalance',this.currentBalanceInp.value)
+           console.log(localStorage)
            navigate(this.appName.dataset.path)
        })
     }
