@@ -3,6 +3,7 @@
 import { navigate } from "./router.js";
 import { renderSideBar } from "./sidebar.js";
 import { nav } from "./nav.js";
+import { dashboardPage } from "./pages/dashboardPage.js";
 // const sidebarDiv = document.getElementById('sidebar')
 // sidebarDiv.innerHTML = renderSideBar();
 // const appName = document.querySelector('.app-name')
@@ -35,6 +36,7 @@ const content = document.querySelector("#content");
 const sidebarDiv = document.querySelector("#sidebar");
 const navDiv = document.querySelector("#nav-header");
 const realContent = document.querySelector(".content-real");
+const dashPage = new dashboardPage();
 
 let isDark = false;
 export function dashboard() {
@@ -61,12 +63,13 @@ export function dashboard() {
     sidebarDiv.classList.toggle("sidebar-close");
   });
   return (realContent.innerHTML = 
-    `
-    <h1>Dashboard</h1>
-    <a data-path='add'>go to the addTransaction</a>
-    <a data-path='profile'>go to the Profile</a> 
-    <a data-path='setting'>go to setting page</a>  
-    `
+    // `
+    // <h1>Dashboard</h1>
+    // <a data-path='add'>go to the addTransaction</a>
+    // <a data-path='profile'>go to the Profile</a> 
+    // <a data-path='setting'>go to setting page</a>  
+    // `
+    dashPage.render()
     );
 }
 dashboard();

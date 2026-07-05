@@ -7,7 +7,6 @@ body{
     display: flex;
     height: 100vh;
     width: 100%;
-    border: 2px solid red;
     flex: 1;
 }
 
@@ -15,6 +14,8 @@ body{
     flex: 0 0 250px;
     border: 2px solid black;
     padding: 20px;
+    position: sticky;
+    top: 0;
 }
 
 .sidebar-close{
@@ -58,4 +59,50 @@ body{
 }
 .nav-last button {
     
+}
+.dash-page{
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+    height: 100px;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.top div{
+    border: 2px solid blue;
+    width: 180px;
+    height: 75px;
+}
+.middle{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* border: 2px solid red; */
+    height: 400px;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.middle div{
+    border: 2px solid blue;
+    flex: 1;
+    height: 310px;
+    gap: 50px;
+}
+.bottom{
+    display: flex;
+    height: auto;
+    margin-top: 20px;
+
+}
+.bottom div{
+    border: 2px solid blue;
+    flex: 1;
+    min-height: 60px;
+    max-height: fit-content;
+    
+    gap: 50px;
 }
