@@ -75,6 +75,7 @@ body{
     border: 2px solid blue;
     width: 180px;
     height: 75px;
+    text-align: center;
 }
 .middle{
     display: flex;
@@ -105,4 +106,16 @@ body{
     max-height: fit-content;
     
     gap: 50px;
+}
+
+.current-box{
+    background-color: gray;
+}
+
+.income-box{
+    background-color: rgb(50, 232, 50);
+}
+
+.expense-box{
+    background-color: rgb(252, 63, 63);
 }

@@ -1,0 +1,20 @@
+.update-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+.update-form input{
+    padding: 15px;
+
+}
+.update-form button{
+    margin-top: 20px;
+    padding: 12px;
+    background-color: aqua;
+    cursor: pointer;
+    
+}

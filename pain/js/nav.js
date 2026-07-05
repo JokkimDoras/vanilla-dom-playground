@@ -4,7 +4,7 @@ export function nav(){
     <h1>something</h1>
     <div class='nav-last'>
     <p>Add Transaction</p>
-    <p>Setting</p>
+    <p data-path='updatebalance' id='add-balance'>updateBalace</p>
     <button id='theme-btn'>Change Theme</button>
     </div>
        `

@@ -1,6 +1,7 @@
+import { appState } from "../state.js"
 export class dashboardPage{
     constructor(){
-
+      this.state = appState;
     }
     render(){
         return `
@@ -8,9 +9,15 @@ export class dashboardPage{
 
         <div class='top'>
 
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class='current-box'>
+        <h4 >Current Balance:<strong>${this.state.startBalance}</strong></h4>
+        </div>
+        <div  class='income-box'>
+        <h4>Income:${this.state.startBalance}</h4>
+        </div>
+        <div class='expense-box'>
+        <h4 >Expense:12,000</h4>
+        </div>
 
         </div>
 
@@ -29,5 +36,12 @@ export class dashboardPage{
 
         </div>
         `
+    }
+
+    stuff(){
+        this.box = document.querySelector('.current-top');
+        this.box.addEventListener('click',function(e){
+            window.location.href = '/updatebalance'
+        })
     }
 }

@@ -43,6 +43,14 @@ export function dashboard() {
   console.log("bro am i rendering again??");
   navDiv.innerHTML = nav();
 
+  const updateBalaceButton = document.querySelector('#add-balance');
+  console.log(updateBalaceButton)
+
+  updateBalaceButton.addEventListener('click',function(){
+    var pathname = this.classList.dataset
+    console.log(pathname)
+  })
+
   const themeBtn = document.querySelector("#theme-btn");
 
   themeBtn.addEventListener("click", function () {
@@ -71,6 +79,7 @@ export function dashboard() {
     // `
     dashPage.render()
     );
+
 }
 dashboard();
 
