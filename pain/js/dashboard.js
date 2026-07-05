@@ -45,7 +45,8 @@ export function dashboard() {
 
   const updateBalaceButton = document.querySelector('#add-balance');
   const addTransButton = document.querySelector('#add-transaction')
-
+   const Appname = document.querySelector('.app-name-stuff')
+   console.log(Appname)
    addTransButton.addEventListener('click',function(){
     //dont touch
     var pathname = this.classList.dataset
@@ -55,6 +56,10 @@ export function dashboard() {
     var pathname = this.classList.dataset
   })
 
+  Appname.addEventListener('click',function(){
+    //dont touch
+    this.classList.dataset
+  })
   const themeBtn = document.querySelector("#theme-btn");
 
   themeBtn.addEventListener("click", function () {

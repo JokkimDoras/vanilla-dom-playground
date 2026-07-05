@@ -1,4 +1,5 @@
 import { appState } from "../state.js"
+import { navigate } from "../router.js"
 
 export class UpdateBalance {
     constructor(){
@@ -19,8 +20,8 @@ export class UpdateBalance {
        this.balanceForm = document.querySelector('.update-form')
        this.currentBalanceInp = document.querySelector('#current-input')
        this.dynamicShow = document.querySelector('.inp-show')
-
-
+       this.appName = document.querySelector('.app-name-stuff')
+   console.log(this.appName)
        
        this.currentBalanceInp.addEventListener('keyup',() =>{
         this.dynamicShow.textContent = `Your Current Balance is ${this.currentBalanceInp.value || this.state.startBalance}`
@@ -29,7 +30,7 @@ export class UpdateBalance {
        this.balanceForm.addEventListener('submit',(e) =>{
            e.preventDefault();
            this.state.startBalance = Number(this.currentBalanceInp.value)
-           console.log(appState)
+           navigate(this.appName.dataset.path)
        })
     }
 }
