@@ -1,6 +1,5 @@
 import { profilePage } from "./pages/profilePage.js";
 import { TransactionForm } from "./pages/addTransaction.js";
-import { settingPage } from "./pages/settingPage.js";
 import { UpdateBalance } from "./pages/updateBalance.js";
 // import { dashboardPage } from "./pages/dashboardPage.js";
 // import { initNewTransaction } from "./pages/addTransaction.js";
@@ -18,9 +17,9 @@ export function navigate(page, push = true) {
     history.pushState({}, "", `/${page}`);
     realContent.innerHTML = dashboard();
   }
-  if (page === "setting") {
-    realContent.innerHTML = settingPage();
-  }
+  // if (page === "setting") {
+  //   realContent.innerHTML = settingPage();
+  // }
   if (page === "profile") {
     realContent.innerHTML = profilePage();
   }

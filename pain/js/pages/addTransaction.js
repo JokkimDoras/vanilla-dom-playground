@@ -98,8 +98,8 @@ export class TransactionForm {
             category:this.categityEl.value,
             note:this.noteEl.value
         }
-        appState.transaction.push(newTranaction)
-
+        appState.addTransaction(newTranaction)
+   console.log(appState)
         this.titleEl.value = ''
         this.amountEl.value = ''
         this.categityEl.value = ''

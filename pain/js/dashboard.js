@@ -44,11 +44,15 @@ export function dashboard() {
   navDiv.innerHTML = nav();
 
   const updateBalaceButton = document.querySelector('#add-balance');
-  console.log(updateBalaceButton)
+  const addTransButton = document.querySelector('#add-transaction')
 
-  updateBalaceButton.addEventListener('click',function(){
+   addTransButton.addEventListener('click',function(){
+    //dont touch
     var pathname = this.classList.dataset
-    console.log(pathname)
+   })
+  updateBalaceButton.addEventListener('click',function(){
+    //dont touch
+    var pathname = this.classList.dataset
   })
 
   const themeBtn = document.querySelector("#theme-btn");
