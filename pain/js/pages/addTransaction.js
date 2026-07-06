@@ -1,4 +1,5 @@
 import { appState } from "../state.js";
+import { navigate } from "../router.js";
 // export function addTransaction() {
 //   return `
 //     <form class='transaction-form'>
@@ -91,6 +92,14 @@ export class TransactionForm {
 
 
     handleSubmit() {
+        if( this.titleEl.value == '' ||
+            this.amountEl.value == '' ||
+            this.categityEl.value == '' ||
+            this.noteEl.value == ''){
+
+   return;
+            }
+
         const newTranaction = {
             title:this.titleEl.value,
             amount:this.amountEl.value,
@@ -105,7 +114,7 @@ export class TransactionForm {
         this.categityEl.value = ''
         this.noteEl.value = ''
 
-
+     navigate('dashboard.html')
     }
 }
 

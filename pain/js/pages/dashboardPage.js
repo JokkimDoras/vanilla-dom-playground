@@ -29,8 +29,17 @@ export class dashboardPage{
         </div>
 
         <div class='bottom'>
+        <div id='recent-transaction'>
+        <div id='recent-title'>
+        <strong>Title</strong>
+        <strong>Amount</strong>
+        <strong>Category</strong>
+        <strong>Status</strong>
+        <strong>Note</strong>
+        </div>
+
         
-        <div id='recent-transaction'></div>
+        </div>
     
         </div>
 
@@ -47,9 +56,10 @@ export class dashboardPage{
         
     appState.transaction.map((trans) => {
             this.recentTransaction.innerHTML += (`
-                <div>
+                <div id='recent-content'>
                 <p>${trans.title}</p>
                 <p>${trans.amount}</p>
+               <p>${trans.status}</p>
                 <p>${trans.category}</p>
                 <p>${trans.note}</p>
                 </div>
