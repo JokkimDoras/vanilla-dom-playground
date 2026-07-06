@@ -30,7 +30,7 @@ export class dashboardPage{
 
         <div class='bottom'>
         
-        <div></div>
+        <div id='recent-transaction'></div>
     
         </div>
 
@@ -40,8 +40,25 @@ export class dashboardPage{
 
     stuff(){
         this.box = document.querySelector('.current-top');
-        this.box.addEventListener('click',function(e){
-            window.location.href = '/updatebalance'
-        })
+        // this.box.addEventListener('click',function(e){
+        //     window.location.href = '/updatebalance'
+        // })
+        this.recentTransaction = document.querySelector('#recent-transaction')
+        
+    appState.transaction.map((trans) => {
+            this.recentTransaction.innerHTML += (`
+                <div>
+                <p>${trans.title}</p>
+                <p>${trans.amount}</p>
+                <p>${trans.category}</p>
+                <p>${trans.note}</p>
+                </div>
+
+                `)
+        }).join()
+
+       
+
+        // this.recentTransaction.appendChild(newTransaction)
     }
 }

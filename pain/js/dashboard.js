@@ -86,7 +86,6 @@ export function dashboard() {
   })
   dash.addEventListener('click',function(){
     if(this.dataset.path == window.location.pathname.replace('/','')){
-      console.log(window.location.pathname.replace('/',''))
       return;
     }
     navigate(this.dataset.path)
@@ -94,7 +93,6 @@ export function dashboard() {
 
   updateBalace.addEventListener('click',function(){
     if(this.dataset.path == window.location.pathname.replace('/','')){
-      console.log(window.location.pathname.replace('/',''))
       return;
     }
     navigate(this.dataset.path)
@@ -109,8 +107,13 @@ export function dashboard() {
   const stuff = document.querySelector(".toggle-the-bar");
   stuff.addEventListener("click", function () {
     sidebarDiv.classList.toggle("sidebar-close");
+
   });
-  return (realContent.innerHTML = 
+  setTimeout(() => {
+    // to prevent the undefined if comes backs to dashboard
+   dashPage.stuff()
+  },200)
+  return realContent.innerHTML = 
     // `
     // <h1>Dashboard</h1>
     // <a data-path='add'>go to the addTransaction</a>
@@ -118,7 +121,8 @@ export function dashboard() {
     // <a data-path='setting'>go to setting page</a>  
     // `
     dashPage.render()
-    );
+    // dashPage.stuff()
+    
 
 }
 dashboard();
