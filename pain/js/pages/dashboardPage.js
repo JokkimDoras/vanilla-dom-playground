@@ -1,3 +1,4 @@
+import { navigate } from "../router.js";
 import { appState } from "../state.js"
 export class dashboardPage{
     constructor(){
@@ -48,16 +49,18 @@ export class dashboardPage{
     }
 
     stuff(){
+        const self = this
+console.log('am i running again')
         this.box = document.querySelector('.current-top');
         // this.box.addEventListener('click',function(e){
         //     window.location.href = '/updatebalance'
         // })
         this.recentTransaction = document.querySelector('#recent-transaction')
         
-    appState.transaction.map((trans) => {
+    appState.transaction.map((trans,index) => {
             this.recentTransaction.innerHTML += (`
-                <div id='recent-content'>
-                <p>${trans.title}</p>
+                <div data-index=${index} class='recent-content'>
+                <p class='test'>${trans.title}</p>
                 <p>${trans.amount}</p>
                <p>${trans.status}</p>
                 <p>${trans.category}</p>
@@ -67,8 +70,48 @@ export class dashboardPage{
                 `)
         }).join()
 
-       
+        this.eachContent = document.querySelectorAll('.recent-content')
+        const some = document.querySelectorAll('.test')
+        console.log(some)
+  console.log(this.eachContent)
 
-        // this.recentTransaction.appendChild(newTransaction)
-    }
+  this.eachContent.forEach((item) => 
+    item.addEventListener('click',function() {
+ 
+        const idToDel = this.dataset.index
+
+        // this.eachContent.forEach((some) => console.log(some))
+      
+        // console.log(this.eachContent)
+        console.log(idToDel)
+
+        self.deleteRecent(Number(idToDel))
+        // this.deleteRecent(idToDel)
+
+    })
+    
+)
+//    this.eachContent.addEventListener('click',function(){
+    //     console.log('is that clicked')
+    //     const idToDel = this.dataset.index
+    //    const deletedTrancation = appState.transaction.filter((_,i) => {
+        //         return i !== idToDel
+    //     })
+    
+    //     appState.transaction = deletedTrancation
+    //     console.log(deletedTrancation)
+    //     console.lof(appState)
+    //    })
+    
+    
+    // this.recentTransaction.appendChild(newTransaction)
+}
+deleteRecent(idToDel){
+    const filteredTransaction = this.state.transaction.filter((_,i) => {
+        return i !== idToDel
+    })
+    this.state.transaction = filteredTransaction;
+     console.log(this.state)
+    navigate('dashboard.html')
+}
 }

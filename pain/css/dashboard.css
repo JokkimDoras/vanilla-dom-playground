@@ -139,7 +139,7 @@ body{
     display: flex;
     justify-content: space-between;
 }
-#recent-content{
+.recent-content{
     display: flex;
     justify-content: space-between;
 }
