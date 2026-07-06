@@ -114,6 +114,7 @@ export class TransactionForm {
         this.noteEl.value = ''
         
   localStorage.setItem('transaction',JSON.stringify(appState.transaction))
+  console.log('find truth',localStorage)
      navigate('dashboard.html')
     }
 }

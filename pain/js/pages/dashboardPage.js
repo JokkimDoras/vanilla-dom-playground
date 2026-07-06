@@ -55,10 +55,11 @@ export class dashboardPage{
         //     window.location.href = '/updatebalance'
         // })
         this.recentTransaction = document.querySelector('#recent-transaction')
-        const saved = localStorage.getItem('transaction')
-        const parsedData = JSON.parse(saved);
-        if(parsedData){
-            appState.transaction = parsedData
+        const saved = JSON.parse(localStorage.getItem('transaction'))
+        console.log(saved)
+        // const parsedData = JSON.parse(saved);
+        if(saved){
+            appState.transaction = saved
         }
    
         
@@ -112,6 +113,8 @@ deleteRecent(idToDel){
         return i !== idToDel
     })
     this.state.transaction = filteredTransaction;
+    localStorage.removeItem('transaction');
+    localStorage.setItem('transaction',JSON.stringify(this.state.transaction))
     navigate('dashboard.html')
 }
 }
