@@ -108,12 +108,12 @@ export class TransactionForm {
             note:this.noteEl.value
         }
         appState.addTransaction(newTranaction)
-   console.log(appState)
         this.titleEl.value = ''
         this.amountEl.value = ''
         this.categityEl.value = ''
         this.noteEl.value = ''
-
+        
+  localStorage.setItem('transaction',JSON.stringify(appState.transaction))
      navigate('dashboard.html')
     }
 }

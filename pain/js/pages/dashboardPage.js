@@ -50,12 +50,17 @@ export class dashboardPage{
 
     stuff(){
         const self = this
-console.log('am i running again')
         this.box = document.querySelector('.current-top');
         // this.box.addEventListener('click',function(e){
         //     window.location.href = '/updatebalance'
         // })
         this.recentTransaction = document.querySelector('#recent-transaction')
+        const saved = localStorage.getItem('transaction')
+        const parsedData = JSON.parse(saved);
+        if(parsedData){
+            appState.transaction = parsedData
+        }
+   
         
     appState.transaction.map((trans,index) => {
             this.recentTransaction.innerHTML += (`
@@ -66,14 +71,11 @@ console.log('am i running again')
                 <p>${trans.category}</p>
                 <p>${trans.note}</p>
                 </div>
-
                 `)
         }).join()
 
         this.eachContent = document.querySelectorAll('.recent-content')
         const some = document.querySelectorAll('.test')
-        console.log(some)
-  console.log(this.eachContent)
 
   this.eachContent.forEach((item) => 
     item.addEventListener('click',function() {
@@ -83,7 +85,6 @@ console.log('am i running again')
         // this.eachContent.forEach((some) => console.log(some))
       
         // console.log(this.eachContent)
-        console.log(idToDel)
 
         self.deleteRecent(Number(idToDel))
         // this.deleteRecent(idToDel)
@@ -111,7 +112,6 @@ deleteRecent(idToDel){
         return i !== idToDel
     })
     this.state.transaction = filteredTransaction;
-     console.log(this.state)
     navigate('dashboard.html')
 }
 }
