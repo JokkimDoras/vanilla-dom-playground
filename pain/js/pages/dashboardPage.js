@@ -14,7 +14,7 @@ export class dashboardPage{
         <h4 >Current Balance:<strong>${this.state.startBalance}</strong></h4>
         </div>
         <div  class='income-box'>
-        <h4>Income:${this.state.startBalance}</h4>
+        <h4>Income:${Number(localStorage.getItem('income')) || 0}</h4>
         </div>
         <div class='expense-box'>
         <h4 >Expense:12,000</h4>

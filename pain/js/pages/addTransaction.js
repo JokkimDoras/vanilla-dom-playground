@@ -117,6 +117,7 @@ export class TransactionForm {
         // console.log(typeof totalIncome)
         appState.income = totalIncome;
 
+        localStorage.setItem('income',totalIncome)
         // console.log(appState)
         appState.addTransaction(newTranaction)
         this.titleEl.value = ''
