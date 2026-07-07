@@ -40,7 +40,7 @@ import { navigate } from "../router.js";
 // }
 
 export class TransactionForm {
-    constructor(){
+    constructor() {
         this.titleEl = null;
         this.amountEl = null;
         this.categoryEl = null;
@@ -71,51 +71,62 @@ export class TransactionForm {
     `;
     }
 
-    init(){
+    init() {
         this.titleEl = document.querySelector('#title');
         this.amountEl = document.querySelector('#amount');
         this.statusEl = document.querySelector('#status');
-        this.categityEl = document.querySelector('#category');
+        this.categoryEl = document.querySelector('#category');
         this.noteEl = document.querySelector('#note');
         this.formEl = document.querySelector('form');
 
-        this.titleEl.addEventListener('keyup',function(){
+        this.titleEl.addEventListener('keyup', function () {
             console.log(this.value)
         })
 
-        this.formEl.addEventListener('submit',(e) =>{
+        this.formEl.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleSubmit();
         })
-    
+
     }
 
 
     handleSubmit() {
-        if( this.titleEl.value == '' ||
+        if (this.titleEl.value == '' ||
             this.amountEl.value == '' ||
-            this.categityEl.value == '' ||
-            this.noteEl.value == ''){
+            this.categoryEl.value == '' ||
+            this.noteEl.value == '') {
 
-   return;
-            }
+            return;
+        }
 
         const newTranaction = {
-            title:this.titleEl.value,
-            amount:this.amountEl.value,
-            status:this.statusEl.value,
-            category:this.categityEl.value,
-            note:this.noteEl.value
+            title: this.titleEl.value,
+            amount: this.amountEl.value,
+            status: this.statusEl.value,
+            category: this.categoryEl.value,
+            note: this.noteEl.value
         }
+
+        const isThatIncome = this.statusEl.value === 'income';
+        // console.log(this.statusEl.value)
+        // console.log(appState.startBalance)
+        // console.log(appState.income)
+        const totalIncome = Number(appState.income) + (isThatIncome ? Number(this.amountEl.value) : 0)
+        // window.console.log(typeof appState.income)
+        // console.log(typeof totalIncome)
+        appState.income = totalIncome;
+
+        // console.log(appState)
         appState.addTransaction(newTranaction)
         this.titleEl.value = ''
         this.amountEl.value = ''
-        this.categityEl.value = ''
+        this.categoryEl.value = ''
         this.noteEl.value = ''
-        
-  localStorage.setItem('transaction',JSON.stringify(appState.transaction))
-  console.log('find truth',localStorage)
-     navigate('dashboard.html')
+
+        localStorage.setItem('transaction', JSON.stringify(appState.transaction))
+        //   console.log('find truth',localStorage)
+        navigate('dashboard.html')
     }
 }
 

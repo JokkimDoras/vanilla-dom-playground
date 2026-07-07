@@ -6,7 +6,10 @@
 class State {
     constructor(){
         this.startBalance = localStorage.getItem('startbalance') || 0;
+
         this.transaction = [];
+        this.income = this.startBalance;
+        this.expense = 0
     }
     updateStartBalance(amount){
         this.startBalance = Number(amount || 0); 
