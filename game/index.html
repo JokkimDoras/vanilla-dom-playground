@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #121212;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #play {
+            width: 140px;
+            background-color: white;
+            height: 30px;
+            position: relative;
+            margin-bottom: 100px;
+
+        }
+
+        #ball {
+            width: 20px;
+            background-color: aqua;
+            height: 20px;
+            border-radius: 20px;
+            position: relative;
+            top: 10px;
+        }
+    </style>
+
+    <div></div>
+
+    <div id="ball"></div>
+
+    <div id="play"></div>
+
+
+
+    <script>
+        let currPosition = 0;
+        const play = document.querySelector('#play');
+        const ball = document.querySelector('#ball')
+        window.addEventListener('keydown', function (e) {
+            if (e.key == 'ArrowRight') {
+                currPosition = currPosition + 10
+                console.log(currPosition)
+
+                play.style.left = `${currPosition}px`
+            }
+            if (e.key == 'ArrowLeft') {
+                currPosition = currPosition - 10
+                console.log(currPosition)
+                play.style.left = `${currPosition}px`
+                console.log(e.key)
+            }
+
+        })
+
+        let currBall = Number(ball.style.top);
+        let faa = false;
+        let back = false;
+        setInterval(() => {
+            if (currBall == 290) {
+                faa = true
+                back = false
+
+            };
+            if(currBall == -10){
+                back = true
+                faa = false
+            }
+            if (faa) {
+                currBall = currBall - 10
+                ball.style.top = `${currBall}px`
+            }
+            if(back){
+                currBall = currBall + 10
+                ball.style.top = `${currBall}px`
+            }
+            if(faa || back) return;
+            currBall = currBall + 10
+                ball.style.top = `${currBall}px`
+        }, 40)
+    </script>
+</body>
+
+</html>
