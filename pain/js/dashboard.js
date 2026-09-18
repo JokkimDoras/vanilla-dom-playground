@@ -130,32 +130,11 @@ dashboard();
 content.addEventListener("click", function (e) {
   const { path } = e.target.dataset;
 
-  // if(path === 'add'){
-  //     navigate(path)
-  // }
-  // if(path === 'setting'){
-  //     navigate(path)
-  // }
-  // if(path === 'profile'){
-  //     navigate(path)
-  // }
   if (path) navigate(path);
 });
 
 window.addEventListener("popstate", function () {
   var path = this.window.location.pathname.replace("/", "");
   navigate("dashboard.html");
-  // console.log(path)
-  // if(path === 'add'){
-  //     navigate(path)
-  // }
-  // if(path === 'setting'){
-  //     navigate(path)
-  // }
-  // if(path === 'profile'){
-  //     navigate(path)
-  // }
-  // if(path == '#dashboard.html' || path === 'dashboard'){
-  //     navigate('dashboard.html')
-  // }
+  
 });
